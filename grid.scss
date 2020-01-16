@@ -1,0 +1,15 @@
+@mixin grid($columns: 1, $gapColumns: 0, $gapRows: 0) {
+  --columns: #{$columns};
+  --gap-columns: #{$gapColumns};
+  --gap-rows: #{$gapRows};
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(var(--gap-columns) / -2);
+  width: calc(100% + var(--gap-columns));
+
+  > * {
+    box-sizing: border-box;
+    width: calc((100% - (var(--columns) * var(--gap-columns))) / var(--columns));
+    margin: 0 calc(var(--gap-columns) / 2) var(--gap-rows);
+  }
+}
